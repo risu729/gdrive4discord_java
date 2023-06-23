@@ -21,7 +21,7 @@ dependencies {
     implementation("com.squareup.okhttp3:okhttp:5.0.0-alpha.11")
 
     // https://mvnrepository.com/artifact/net.dv8tion/JDA
-    implementation("net.dv8tion:JDA:5.0.0-beta.10") {
+    implementation("net.dv8tion:JDA:5.0.0-beta.11") {
         exclude(module = "opus-java")
     }
     // https://mvnrepository.com/artifact/ch.qos.logback/logback-classic
