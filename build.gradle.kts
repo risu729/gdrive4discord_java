@@ -15,10 +15,16 @@ dependencies {
     implementation("com.google.guava:guava:32.0.1-jre")
     // https://mvnrepository.com/artifact/org.jetbrains/annotations
     implementation("org.jetbrains:annotations:24.0.1")
+    // https://mvnrepository.com/artifact/org.projectlombok/lombok
+    compileOnly("org.projectlombok:lombok:1.18.28")
+    annotationProcessor("org.projectlombok:lombok:1.18.28")
     // https://mvnrepository.com/artifact/io.github.cdimascio/dotenv-java
     implementation("io.github.cdimascio:dotenv-java:3.0.0")
+
     // https://mvnrepository.com/artifact/com.squareup.okhttp3/okhttp
     implementation("com.squareup.okhttp3:okhttp:5.0.0-alpha.11")
+    // https://mvnrepository.com/artifact/org.nibor.autolink/autolink
+    implementation("org.nibor.autolink:autolink:0.11.0")
 
     // https://mvnrepository.com/artifact/net.dv8tion/JDA
     implementation("net.dv8tion:JDA:5.0.0-beta.11") {
