@@ -29,7 +29,10 @@ import org.nibor.autolink.LinkType;
 @FieldDefaults(level = lombok.AccessLevel.PRIVATE, makeFinal = true)
 class Listener extends ListenerAdapter {
 
-  private static final Pattern GOOGLE_FILE_ID_PATTERN = Pattern.compile("[-\\w]+");
+  // ref:
+  // https://stackoverflow.com/questions/16840038/easiest-way-to-get-file-id-from-url-on-google-apps-script
+  private static final Pattern GOOGLE_FILE_ID_PATTERN =
+      Pattern.compile("[-\\w]{25,}(?!.*[-\\w]{25,})");
 
   private static final int MAX_RETRIES = 3;
   private static final int HISTORY_SIZE = 5;
