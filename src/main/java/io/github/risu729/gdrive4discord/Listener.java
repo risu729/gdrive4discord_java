@@ -17,6 +17,7 @@ import net.dv8tion.jda.api.EmbedBuilder;
 import net.dv8tion.jda.api.entities.Message;
 import net.dv8tion.jda.api.entities.MessageEmbed;
 import net.dv8tion.jda.api.entities.channel.middleman.MessageChannel;
+import net.dv8tion.jda.api.events.interaction.command.MessageContextInteractionEvent;
 import net.dv8tion.jda.api.events.message.*;
 import net.dv8tion.jda.api.exceptions.ErrorResponseException;
 import net.dv8tion.jda.api.hooks.ListenerAdapter;
@@ -44,7 +45,7 @@ class Listener extends ListenerAdapter {
     if (isSelfMessage(event.getMessage())) {
       return;
     }
-    replaceEmbeds(event.getMessage(), true);
+    replaceEmbeds(event.getMessage(), true, true);
   }
 
   @Override
@@ -52,7 +53,7 @@ class Listener extends ListenerAdapter {
     if (isSelfMessage(event.getMessage())) {
       return;
     }
-    replaceEmbeds(event.getMessage(), false);
+    replaceEmbeds(event.getMessage(), false, true);
   }
 
   @Override
@@ -71,11 +72,21 @@ class Listener extends ListenerAdapter {
         .forEach(AuditableRestAction::queue);
   }
 
+  @Override
+  public void onMessageContextInteraction(@NotNull MessageContextInteractionEvent event) {
+    if (isSelfMessage(event.getTarget())) {
+      return;
+    }
+    event.deferReply(true).queue();
+    replaceEmbeds(event.getTarget(), false, false);
+    event.getHook().deleteOriginal().queue();
+  }
+
   private boolean isSelfMessage(@NotNull Message message) {
     return message.getAuthor().getId().equals(message.getJDA().getSelfUser().getId());
   }
 
-  private void replaceEmbeds(@NotNull Message source, boolean isNewMessage) {
+  private void replaceEmbeds(@NotNull Message source, boolean isNewMessage, boolean showTyping) {
     var channel = source.getChannel();
 
     // disable since it loops
@@ -102,7 +113,7 @@ class Listener extends ListenerAdapter {
 
     // send typing indicator to indicate the bot is working
     // only send for new messages
-    if (oldEmbedsMessage.isEmpty()) {
+    if (oldEmbedsMessage.isEmpty() && showTyping) {
       channel.sendTyping().queue();
     }
 

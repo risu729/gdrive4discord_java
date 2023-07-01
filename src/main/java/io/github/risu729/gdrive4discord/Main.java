@@ -22,6 +22,7 @@ import java.util.List;
 import lombok.experimental.UtilityClass;
 import net.dv8tion.jda.api.JDABuilder;
 import net.dv8tion.jda.api.entities.Activity;
+import net.dv8tion.jda.api.interactions.commands.build.Commands;
 import net.dv8tion.jda.api.requests.GatewayIntent;
 import org.jetbrains.annotations.NotNull;
 
@@ -75,5 +76,7 @@ class Main {
             .build();
 
     jda.awaitReady();
+
+    jda.updateCommands().addCommands(Commands.message("埋め込みの更新")).queue();
   }
 }
