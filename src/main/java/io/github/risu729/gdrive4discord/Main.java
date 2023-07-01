@@ -19,18 +19,19 @@ import java.io.UncheckedIOException;
 import java.nio.file.Path;
 import java.security.GeneralSecurityException;
 import java.util.List;
+import lombok.experimental.UtilityClass;
 import net.dv8tion.jda.api.JDABuilder;
 import net.dv8tion.jda.api.entities.Activity;
-import net.dv8tion.jda.api.entities.channel.middleman.MessageChannel;
 import net.dv8tion.jda.api.requests.GatewayIntent;
 import org.jetbrains.annotations.NotNull;
 
-public class Main {
+@UtilityClass
+class Main {
 
-  static final Drive DRIVE_SERVICE;
-  private static final String APPLICATION_NAME = "gdrive4discord";
-  private static final Path TOKENS_DIRECTORY_PATH = Path.of(".tokens");
-  private static final JsonFactory JSON_FACTORY = GsonFactory.getDefaultInstance();
+  final Drive DRIVE_SERVICE;
+  private final String APPLICATION_NAME = "gdrive4discord";
+  private final Path TOKENS_DIRECTORY_PATH = Path.of(".tokens");
+  private final JsonFactory JSON_FACTORY = GsonFactory.getDefaultInstance();
 
   static {
     try {
@@ -46,7 +47,7 @@ public class Main {
     }
   }
 
-  private static @NotNull Credential getGoogleCredential(@NotNull HttpTransport httpTransport)
+  private @NotNull Credential getGoogleCredential(@NotNull HttpTransport httpTransport)
       throws IOException {
     var clientSecrets =
         GoogleClientSecrets.load(JSON_FACTORY, new StringReader(Envs.getEnv("GOOGLE_CREDENTIALS")));
@@ -62,7 +63,7 @@ public class Main {
     return new AuthorizationCodeInstalledApp(flow, receiver).authorize("user");
   }
 
-  public static void main(String... args) throws InterruptedException {
+  public void main(String[] args) throws InterruptedException {
 
     var jda =
         JDABuilder.createLight(
