@@ -27,7 +27,7 @@ dependencies {
     implementation("org.nibor.autolink:autolink:0.11.0")
 
     // https://mvnrepository.com/artifact/net.dv8tion/JDA
-    implementation("net.dv8tion:JDA:5.0.0-beta.11") {
+    implementation("net.dv8tion:JDA:5.0.0-beta.12") {
         exclude(module = "opus-java")
     }
     // https://mvnrepository.com/artifact/ch.qos.logback/logback-classic
