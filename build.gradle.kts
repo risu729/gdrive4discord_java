@@ -16,8 +16,8 @@ dependencies {
     // https://mvnrepository.com/artifact/org.jetbrains/annotations
     implementation("org.jetbrains:annotations:24.0.1")
     // https://mvnrepository.com/artifact/org.projectlombok/lombok
-    compileOnly("org.projectlombok:lombok:1.18.28")
-    annotationProcessor("org.projectlombok:lombok:1.18.28")
+    compileOnly("org.projectlombok:lombok:1.18.30")
+    annotationProcessor("org.projectlombok:lombok:1.18.30")
     // https://mvnrepository.com/artifact/io.github.cdimascio/dotenv-java
     implementation("io.github.cdimascio:dotenv-java:3.0.0")
 
