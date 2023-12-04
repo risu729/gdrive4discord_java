@@ -38,7 +38,7 @@ dependencies {
     // https://mvnrepository.com/artifact/com.google.oauth-client/google-oauth-client-jetty
     implementation("com.google.oauth-client:google-oauth-client-jetty:1.34.1")
     // https://mvnrepository.com/artifact/com.google.apis/google-api-services-drive
-    implementation("com.google.apis:google-api-services-drive:v3-rev20230822-2.0.0")
+    implementation("com.google.apis:google-api-services-drive:v3-rev20231120-2.0.0")
 }
 
 application {
