@@ -22,7 +22,7 @@ dependencies {
     implementation("io.github.cdimascio:dotenv-java:3.0.0")
 
     // https://mvnrepository.com/artifact/com.squareup.okhttp3/okhttp
-    implementation("com.squareup.okhttp3:okhttp:5.0.0-alpha.11")
+    implementation("com.squareup.okhttp3:okhttp:5.0.0-alpha.12")
     // https://mvnrepository.com/artifact/org.nibor.autolink/autolink
     implementation("org.nibor.autolink:autolink:0.11.0")
 
